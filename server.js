@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
-  console.log(url);
+
   if (url.startsWith("/book")) {
     https.get(baseUrl + url, resp => {
       let data = "";

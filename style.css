@@ -4,8 +4,10 @@ body {
 
 p {
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.25rem;
-  line-height: 2;
+  font-size: 21px;
+  line-height: 1.85;
+  max-width: 728px;
+  margin: inherit auto;
 }
 
 em {
