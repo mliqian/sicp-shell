@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const hostname = "127.0.0.1";
-const port = 3000;
+const port = 3100;
 
 const baseUrl =
   "https://mitpress.mit.edu/sites/default/files/sicp/full-text/book";
