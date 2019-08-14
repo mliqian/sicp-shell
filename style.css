@@ -1,0 +1,22 @@
+body {
+  background: rgb(219, 238, 221);
+}
+
+p {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  line-height: 2;
+}
+
+em {
+  background: white;
+  font-style: normal;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+}
+
+.footnote * {
+  font-size: 1rem;
+  line-height: 1.25;
+  font-family: inherit;
+}
