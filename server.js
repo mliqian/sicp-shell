@@ -2,6 +2,7 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
+const { sendFile, fetchHTML } = require("./utils");
 
 const hostname = "127.0.0.1";
 const port = 3100;
@@ -25,24 +26,13 @@ const server = http.createServer((req, res) => {
   }
 
   if (url.startsWith("/book")) {
-    https.get(baseUrl + url, resp => {
-      let data = "";
-      resp.on("data", chunk => {
-        data += chunk;
-      });
-
-      resp.on("end", () => {
-        const styleTag = `<link rel="stylesheet" type="text/css" href="style.css">`;
-        const styleIndex = data.indexOf("</head>");
-        if (styleIndex !== -1) {
-          data = `${data.slice(0, styleIndex)}${styleTag}${data.slice(
-            styleIndex
-          )}`;
-        }
-
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/html");
-        res.end(data);
+    let cacheKey = url.slice(1, url.indexOf("."));
+    let filePath = path.resolve(__dirname, `cache/${cacheKey}`);
+    sendFile(filePath, res, "text/html").catch(e => {
+      fetchHTML(baseUrl + url, res).then(data => {
+        fs.writeFile(filePath, data, () => {
+          console.log("New file: ", filePath);
+        });
       });
     });
     return;
