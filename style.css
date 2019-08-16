@@ -28,10 +28,11 @@ tt {
   font-family: "Consolas", "Courier New", Courier, monospace;
   background: #181818;
   color: white;
-  display: block;
-  padding: 10px;
+  display: inline-block;
+  padding: 0 10px;
   margin-bottom: 10px;
   font-size: 16px;
+  border-radius: 3px;
 }
 
 tt i {
@@ -41,4 +42,8 @@ tt i {
   padding: 0 10px;
   background: #555555;
   border-radius: 5px;
+}
+
+tt i:last-of-type {
+  margin-bottom: 10px;
 }
